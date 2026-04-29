@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FileText, Music, Sparkles, Wand2 } from "lucide-react";
 import heroImage from "@/assets/fairy-bot-hero.png";
 
 const MAX_LINK = "https://max.ru/id352829389470_4_bot";
@@ -15,7 +16,12 @@ const examples = [
   },
 ];
 
-const features = ["Сказка с вашим ребёнком в главной роли", "Персональный сюжет за пару минут", "Готовый PDF для чтения и печати", "Индивидуальная песня-поздравление"];
+const features = [
+  { label: "Ребёнок — герой", Icon: Sparkles },
+  { label: "Сюжет за пару минут", Icon: Wand2 },
+  { label: "PDF", Icon: FileText },
+  { label: "Песня-поздравление", Icon: Music },
+];
 
 type Messenger = "telegram" | "max";
 
@@ -86,10 +92,11 @@ const Index = () => {
             Персональная сказка и PDF за пару минут.
           </p>
 
-          <div className="mt-3 flex max-w-[520px] flex-wrap gap-1.5">
-            {features.map((feature) => (
-              <div key={feature} className="rounded-full border border-primary-foreground/18 bg-card/14 px-2.5 py-1 text-[11px] font-extrabold leading-tight text-primary-foreground shadow-[0_10px_40px_hsl(var(--storybook-night)/0.16)] backdrop-blur-md md:px-3 md:text-xs">
-                {feature}
+          <div className="mt-3 flex w-fit max-w-full flex-wrap items-center gap-x-2 gap-y-1 rounded-full border border-primary-foreground/18 bg-card/12 px-3 py-1.5 text-primary-foreground shadow-[0_10px_40px_hsl(var(--storybook-night)/0.14)] backdrop-blur-md md:px-4">
+            {features.map(({ label, Icon }) => (
+              <div key={label} className="inline-flex items-center gap-1.5 text-[11px] font-extrabold leading-none md:text-xs">
+                <Icon className="h-3.5 w-3.5 shrink-0 text-accent md:h-4 md:w-4" aria-hidden="true" />
+                <span className="whitespace-nowrap">{label}</span>
               </div>
             ))}
           </div>
