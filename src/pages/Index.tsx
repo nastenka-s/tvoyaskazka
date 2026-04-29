@@ -15,7 +15,7 @@ const examples = [
   },
 ];
 
-const features = ["Сказка с вашим ребёнком в главной роли", "Персональный сюжет за пару минут", "Готовый PDF для чтения и печати"];
+const features = ["Сказка с вашим ребёнком в главной роли", "Персональный сюжет за пару минут", "Готовый PDF для чтения и печати", "Индивидуальная песня-поздравление"];
 
 type Messenger = "telegram" | "max";
 
@@ -72,12 +72,19 @@ const Index = () => {
             Бот создаёт персональные волшебные истории по имени, возрасту и любимым темам ребёнка — с приключением, добрым финалом и готовым PDF.
           </p>
 
-          <div className="mt-5 grid max-w-[620px] gap-2 md:grid-cols-3">
+          <div className="mt-5 grid max-w-[620px] gap-2 sm:grid-cols-2">
             {features.map((feature) => (
               <div key={feature} className="rounded-lg border border-primary-foreground/25 bg-card/18 px-3 py-2 text-sm font-extrabold text-primary-foreground shadow-[0_10px_40px_hsl(var(--storybook-night)/0.2)] backdrop-blur-md md:text-base">
                 {feature}
               </div>
             ))}
+          </div>
+
+          <div className="mt-4 inline-flex w-fit max-w-full flex-wrap items-baseline gap-x-2 rounded-full border border-accent/45 bg-popover/18 px-4 py-2 text-primary-foreground shadow-[0_12px_42px_hsl(var(--storybook-night)/0.2)] backdrop-blur-md">
+            <span className="text-xs font-black uppercase tracking-[0.16em] text-accent">Цена до 1 июня</span>
+            <span className="text-lg font-black md:text-2xl">349₽</span>
+            <span className="text-sm font-extrabold text-primary-foreground/78">за одну сказку</span>
+            <span className="text-sm font-bold text-primary-foreground/58 line-through">549₽</span>
           </div>
 
           <div className="mt-5 flex flex-wrap gap-3">
