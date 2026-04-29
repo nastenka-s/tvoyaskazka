@@ -1,3 +1,4 @@
+import { useState } from "react";
 import heroImage from "@/assets/fairy-bot-hero.png";
 
 const MAX_LINK = "https://max.ru/id352829389470_4_bot";
@@ -16,7 +17,30 @@ const examples = [
 
 const features = ["Сказка с вашим ребёнком в главной роли", "Персональный сюжет за пару минут", "Готовый PDF для чтения и печати"];
 
+type Messenger = "telegram" | "max";
+
+const messengerData = {
+  telegram: {
+    name: "Telegram",
+    link: TELEGRAM_LINK,
+    goal: "telegram_open",
+    note: "Для открытия Telegram может понадобиться VPN.",
+    button: "Создать свою сказку в Telegram",
+    className: "bg-telegram shadow-[0_0_28px_hsl(var(--telegram)/0.42)]",
+  },
+  max: {
+    name: "MAX",
+    link: MAX_LINK,
+    goal: "max_open",
+    note: "Вы перейдёте в бот сказок в MAX.",
+    button: "Создать свою сказку в MAX",
+    className: "bg-max shadow-[0_0_28px_hsl(var(--max)/0.42)]",
+  },
+};
+
 const Index = () => {
+  const [selectedMessenger, setSelectedMessenger] = useState<Messenger | null>(null);
+
   const trackOpen = (goal: string) => {
     const key = `story_bot_${goal}_sent`;
     if (!localStorage.getItem(key)) {
@@ -28,10 +52,12 @@ const Index = () => {
     }
   };
 
+  const selectedData = selectedMessenger ? messengerData[selectedMessenger] : null;
+
   return (
     <main className="relative h-screen w-screen overflow-hidden bg-background text-foreground">
       <div className="absolute inset-0">
-        <img src={heroImage} alt="Волшебная сказка с ребёнком" className="h-full w-full object-cover" />
+        <img src={heroImage} alt="Волшебная сказка с ребёнком" className="h-full w-full object-cover object-[62%_center] md:object-center" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,hsl(var(--storybook-night)/0.78)_0%,hsl(var(--storybook-night)/0.46)_46%,hsl(var(--storybook-night)/0.12)_100%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_24%_84%,hsl(var(--storybook-glow)/0.28),transparent_34%)]" />
       </div>
@@ -55,12 +81,12 @@ const Index = () => {
           </div>
 
           <div className="mt-5 flex flex-wrap gap-3">
-            <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" onClick={() => trackOpen("telegram_open")} className="inline-flex min-h-12 items-center justify-center rounded-full bg-telegram px-5 text-sm font-black text-primary-foreground shadow-[0_0_28px_hsl(var(--telegram)/0.42)] transition-transform hover:scale-105 md:px-7 md:text-base">
-              Открыть в Telegram <span className="ml-2 text-primary-foreground/75">нужен VPN</span>
-            </a>
-            <a href={MAX_LINK} target="_blank" rel="noopener noreferrer" onClick={() => trackOpen("max_open")} className="inline-flex min-h-12 items-center justify-center rounded-full bg-max px-7 text-sm font-black text-primary-foreground shadow-[0_0_28px_hsl(var(--max)/0.42)] transition-transform hover:scale-105 md:text-base">
-              Открыть в MAX
-            </a>
+            <button type="button" onClick={() => setSelectedMessenger("telegram")} className="inline-flex min-h-12 items-center justify-center rounded-full bg-telegram px-5 text-sm font-black text-primary-foreground shadow-[0_0_28px_hsl(var(--telegram)/0.42)] transition-transform hover:scale-105 md:px-7 md:text-base">
+              Создать свою сказку в Telegram <span className="ml-2 text-primary-foreground/75">нужен VPN</span>
+            </button>
+            <button type="button" onClick={() => setSelectedMessenger("max")} className="inline-flex min-h-12 items-center justify-center rounded-full bg-max px-7 text-sm font-black text-primary-foreground shadow-[0_0_28px_hsl(var(--max)/0.42)] transition-transform hover:scale-105 md:text-base">
+              Создать свою сказку в MAX
+            </button>
           </div>
 
           <div className="mt-5">
@@ -80,6 +106,22 @@ const Index = () => {
           <span className="hidden text-xs font-black uppercase tracking-[0.24em] md:block">skazki bot</span>
         </div>
       </section>
+
+      {selectedData && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/70 px-4 backdrop-blur-sm" onClick={() => setSelectedMessenger(null)}>
+          <div className="w-full max-w-sm rounded-2xl border border-primary-foreground/25 bg-popover/90 p-5 text-center text-primary-foreground shadow-[0_24px_80px_hsl(var(--storybook-night)/0.55)] backdrop-blur-xl" onClick={(event) => event.stopPropagation()}>
+            <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-3xl shadow-[0_0_30px_hsl(var(--storybook-glow)/0.35)]">✨</div>
+            <h2 className="font-display text-2xl font-black leading-tight">Перейти в {selectedData.name}?</h2>
+            <p className="mt-2 text-sm font-bold leading-snug text-primary-foreground/82">{selectedData.note}</p>
+            <a href={selectedData.link} target="_blank" rel="noopener noreferrer" onClick={() => trackOpen(selectedData.goal)} className={`mt-5 inline-flex min-h-12 w-full items-center justify-center rounded-full px-5 text-sm font-black text-primary-foreground transition-transform hover:scale-[1.02] ${selectedData.className}`}>
+              {selectedData.button}
+            </a>
+            <button type="button" onClick={() => setSelectedMessenger(null)} className="mt-3 text-sm font-extrabold text-primary-foreground/70 transition-colors hover:text-primary-foreground">
+              Отмена
+            </button>
+          </div>
+        </div>
+      )}
     </main>
   );
 };
