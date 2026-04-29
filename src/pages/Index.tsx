@@ -82,13 +82,13 @@ const Index = () => {
           <h1 className="font-display text-[clamp(2rem,5vw,4.9rem)] font-black leading-[0.92] text-primary-foreground drop-shadow-[0_6px_28px_hsl(var(--storybook-night)/0.65)]">
             Сказка, где ваш ребёнок — главный герой
           </h1>
-          <p className="mt-3 max-w-[450px] text-sm font-bold leading-snug text-primary-foreground/88 drop-shadow-md md:text-xl">
-            Персональная сказка по имени, возрасту и любимым темам ребёнка — с добрым финалом и готовым PDF.
+          <p className="mt-3 max-w-[360px] text-sm font-bold leading-snug text-primary-foreground/88 drop-shadow-md md:text-lg">
+            Персональная сказка и PDF за пару минут.
           </p>
 
-          <div className="mt-4 grid max-w-[520px] gap-1.5 sm:grid-cols-2">
+          <div className="mt-3 flex max-w-[520px] flex-wrap gap-1.5">
             {features.map((feature) => (
-              <div key={feature} className="rounded-lg border border-primary-foreground/20 bg-card/14 px-3 py-1.5 text-xs font-extrabold text-primary-foreground shadow-[0_10px_40px_hsl(var(--storybook-night)/0.16)] backdrop-blur-md md:text-sm">
+              <div key={feature} className="rounded-full border border-primary-foreground/18 bg-card/14 px-2.5 py-1 text-[11px] font-extrabold leading-tight text-primary-foreground shadow-[0_10px_40px_hsl(var(--storybook-night)/0.16)] backdrop-blur-md md:px-3 md:text-xs">
                 {feature}
               </div>
             ))}
