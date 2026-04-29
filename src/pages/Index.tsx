@@ -79,7 +79,7 @@ const Index = () => {
       <section className="relative z-10 grid h-screen grid-rows-[1fr_auto] px-5 py-5 md:px-10 md:py-8">
         <div className="flex max-w-[720px] flex-col justify-center">
           <p className="mb-2 text-xs font-black uppercase tracking-[0.28em] text-accent drop-shadow-md md:text-sm">бот сказок в MAX и Telegram</p>
-          <h1 className="font-display text-[clamp(2.4rem,6vw,5.8rem)] font-black leading-[0.9] text-primary-foreground drop-shadow-[0_6px_28px_hsl(var(--storybook-night)/0.65)]">
+          <h1 className="font-display text-[clamp(2rem,5vw,4.9rem)] font-black leading-[0.92] text-primary-foreground drop-shadow-[0_6px_28px_hsl(var(--storybook-night)/0.65)]">
             Сказка, где ваш ребёнок — главный герой
           </h1>
           <p className="mt-3 max-w-[450px] text-sm font-bold leading-snug text-primary-foreground/88 drop-shadow-md md:text-xl">
@@ -94,11 +94,11 @@ const Index = () => {
             ))}
           </div>
 
-          <div className="mt-4 inline-flex w-fit max-w-full flex-wrap items-baseline gap-x-2 rounded-full border border-accent/45 bg-popover/18 px-4 py-2 text-primary-foreground shadow-[0_12px_42px_hsl(var(--storybook-night)/0.2)] backdrop-blur-md">
-            <span className="text-xs font-black uppercase tracking-[0.16em] text-accent">Цена до 1 июня</span>
-            <span className="text-lg font-black md:text-2xl">349₽</span>
-            <span className="text-sm font-extrabold text-primary-foreground/78">за одну сказку</span>
-            <span className="text-sm font-bold text-primary-foreground/58 line-through">549₽</span>
+          <div className="mt-4 inline-flex w-fit max-w-full flex-nowrap items-baseline gap-x-1.5 whitespace-nowrap rounded-full border border-accent/45 bg-popover/18 px-3 py-2 text-primary-foreground shadow-[0_12px_42px_hsl(var(--storybook-night)/0.2)] backdrop-blur-md md:gap-x-2 md:px-4">
+            <span className="text-[10px] font-black uppercase tracking-[0.08em] text-accent md:text-xs md:tracking-[0.16em]">До 1 июня</span>
+            <span className="text-base font-black md:text-2xl">349₽</span>
+            <span className="text-xs font-extrabold text-primary-foreground/78 md:text-sm">за сказку</span>
+            <span className="text-xs font-bold text-primary-foreground/58 line-through md:text-sm">549₽</span>
           </div>
 
           <div className="mt-5 flex flex-wrap gap-3">
