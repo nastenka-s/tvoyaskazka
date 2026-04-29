@@ -40,6 +40,10 @@ const messengerData = {
 
 const Index = () => {
   const [selectedMessenger, setSelectedMessenger] = useState<Messenger | null>(null);
+  const [openedMessengers, setOpenedMessengers] = useState<Record<Messenger, boolean>>(() => ({
+    telegram: sessionStorage.getItem("story_bot_telegram_opened") === "1",
+    max: sessionStorage.getItem("story_bot_max_opened") === "1",
+  }));
 
   const trackOpen = (goal: string) => {
     const key = `story_bot_${goal}_sent`;
@@ -52,7 +56,17 @@ const Index = () => {
     }
   };
 
+  const handleOpen = (messenger: Messenger) => {
+    if (openedMessengers[messenger]) return;
+
+    const data = messengerData[messenger];
+    sessionStorage.setItem(`story_bot_${messenger}_opened`, "1");
+    setOpenedMessengers((current) => ({ ...current, [messenger]: true }));
+    trackOpen(data.goal);
+  };
+
   const selectedData = selectedMessenger ? messengerData[selectedMessenger] : null;
+  const selectedAlreadyOpened = selectedMessenger ? openedMessengers[selectedMessenger] : false;
 
   return (
     <main className="relative h-screen w-screen overflow-hidden bg-background text-foreground">
@@ -68,13 +82,13 @@ const Index = () => {
           <h1 className="font-display text-[clamp(2.4rem,6vw,5.8rem)] font-black leading-[0.9] text-primary-foreground drop-shadow-[0_6px_28px_hsl(var(--storybook-night)/0.65)]">
             Сказка, где ваш ребёнок — главный герой
           </h1>
-          <p className="mt-4 max-w-[560px] text-base font-bold leading-snug text-primary-foreground/90 drop-shadow-md md:text-2xl">
-            Бот создаёт персональные волшебные истории по имени, возрасту и любимым темам ребёнка — с приключением, добрым финалом и готовым PDF.
+          <p className="mt-3 max-w-[450px] text-sm font-bold leading-snug text-primary-foreground/88 drop-shadow-md md:text-xl">
+            Персональная сказка по имени, возрасту и любимым темам ребёнка — с добрым финалом и готовым PDF.
           </p>
 
-          <div className="mt-5 grid max-w-[620px] gap-2 sm:grid-cols-2">
+          <div className="mt-4 grid max-w-[520px] gap-1.5 sm:grid-cols-2">
             {features.map((feature) => (
-              <div key={feature} className="rounded-lg border border-primary-foreground/25 bg-card/18 px-3 py-2 text-sm font-extrabold text-primary-foreground shadow-[0_10px_40px_hsl(var(--storybook-night)/0.2)] backdrop-blur-md md:text-base">
+              <div key={feature} className="rounded-lg border border-primary-foreground/20 bg-card/14 px-3 py-1.5 text-xs font-extrabold text-primary-foreground shadow-[0_10px_40px_hsl(var(--storybook-night)/0.16)] backdrop-blur-md md:text-sm">
                 {feature}
               </div>
             ))}
@@ -120,9 +134,15 @@ const Index = () => {
             <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-3xl shadow-[0_0_30px_hsl(var(--storybook-glow)/0.35)]">✨</div>
             <h2 className="font-display text-2xl font-black leading-tight">Перейти в {selectedData.name}?</h2>
             <p className="mt-2 text-sm font-bold leading-snug text-primary-foreground/82">{selectedData.note}</p>
-            <a href={selectedData.link} target="_blank" rel="noopener noreferrer" onClick={() => trackOpen(selectedData.goal)} className={`mt-5 inline-flex min-h-12 w-full items-center justify-center rounded-full px-5 text-sm font-black text-primary-foreground transition-transform hover:scale-[1.02] ${selectedData.className}`}>
-              {selectedData.button}
-            </a>
+            {selectedAlreadyOpened ? (
+              <button type="button" disabled className="mt-5 inline-flex min-h-12 w-full cursor-not-allowed items-center justify-center rounded-full bg-muted px-5 text-sm font-black text-muted-foreground">
+                Уже открывали в этой сессии
+              </button>
+            ) : (
+              <a href={selectedData.link} target="_blank" rel="noopener noreferrer" onClick={() => handleOpen(selectedMessenger)} className={`mt-5 inline-flex min-h-12 w-full items-center justify-center rounded-full px-5 text-sm font-black text-primary-foreground transition-transform hover:scale-[1.02] ${selectedData.className}`}>
+                {selectedData.button}
+              </a>
+            )}
             <button type="button" onClick={() => setSelectedMessenger(null)} className="mt-3 text-sm font-extrabold text-primary-foreground/70 transition-colors hover:text-primary-foreground">
               Отмена
             </button>
