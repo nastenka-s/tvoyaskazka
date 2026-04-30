@@ -101,11 +101,18 @@ const Index = () => {
             ))}
           </div>
 
-          <div className="mt-4 inline-flex w-fit max-w-full flex-nowrap items-baseline gap-x-1.5 whitespace-nowrap rounded-full border border-accent/45 bg-popover/18 px-3 py-2 text-primary-foreground shadow-[0_12px_42px_hsl(var(--storybook-night)/0.2)] backdrop-blur-md md:gap-x-2 md:px-4">
+          <div className="mt-4 flex w-fit max-w-full flex-col gap-1.5 rounded-2xl border border-accent/45 bg-popover/18 px-3 py-2 text-primary-foreground shadow-[0_12px_42px_hsl(var(--storybook-night)/0.2)] backdrop-blur-md md:px-4">
             <span className="text-[10px] font-black uppercase tracking-[0.08em] text-accent md:text-xs md:tracking-[0.16em]">До 1 июня</span>
-            <span className="text-base font-black md:text-2xl">349₽</span>
-            <span className="text-xs font-extrabold text-primary-foreground/78 md:text-sm">за сказку</span>
-            <span className="text-xs font-bold text-primary-foreground/58 line-through md:text-sm">549₽</span>
+            <div className="flex flex-nowrap items-baseline gap-x-1.5 whitespace-nowrap md:gap-x-2">
+              <span className="text-sm font-extrabold md:text-base">Сказка</span>
+              <span className="text-base font-black md:text-2xl">349₽</span>
+              <span className="text-xs font-bold text-primary-foreground/58 line-through md:text-sm">549₽</span>
+            </div>
+            <div className="flex flex-nowrap items-baseline gap-x-1.5 whitespace-nowrap md:gap-x-2">
+              <span className="text-sm font-extrabold md:text-base">Сказка + песня</span>
+              <span className="text-base font-black md:text-2xl">399₽</span>
+              <span className="text-xs font-bold text-primary-foreground/58 line-through md:text-sm">650₽</span>
+            </div>
           </div>
 
           <div className="mt-5 flex flex-wrap gap-3">
