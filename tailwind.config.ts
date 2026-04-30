@@ -45,6 +45,8 @@ export default {
         },
         telegram: "hsl(var(--telegram))",
         max: "hsl(var(--max))",
+        "storybook-night": "hsl(var(--storybook-night))",
+        "storybook-glow": "hsl(var(--storybook-glow))",
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
