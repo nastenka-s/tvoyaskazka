@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BookOpen, FileText, Music, Sparkles } from "lucide-react";
+import { BookOpen, FileText, Music, Sparkles, Wand2 } from "lucide-react";
 import heroImage from "@/assets/fairy-bot-hero.png";
 
 const MAX_LINK = "https://max.ru/id352829389470_4_bot";
