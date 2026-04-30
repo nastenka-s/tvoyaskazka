@@ -85,7 +85,7 @@ const Index = () => {
       <section className="relative z-10 grid h-screen grid-rows-[1fr_auto] px-5 py-5 md:px-10 md:py-8">
         <div className="flex max-w-[720px] flex-col justify-center">
           <p className="mb-2 text-xs font-black uppercase tracking-[0.28em] text-accent drop-shadow-md md:text-sm">бот сказок в MAX и Telegram</p>
-          <h1 className="font-display text-[clamp(2rem,5vw,4.9rem)] font-black leading-[0.92] text-primary-foreground drop-shadow-[0_6px_28px_hsl(var(--storybook-night)/0.65)]">
+          <h1 className="font-display text-[clamp(2.6rem,7vw,6.4rem)] font-bold leading-[0.95] text-primary-foreground drop-shadow-[0_6px_28px_hsl(var(--storybook-night)/0.65)]">
             Сказка, где ваш ребёнок — главный герой
           </h1>
           <p className="mt-3 max-w-[360px] text-sm font-bold leading-snug text-primary-foreground/88 drop-shadow-md md:text-lg">
@@ -121,7 +121,8 @@ const Index = () => {
             <p className="mb-2 text-xs font-black uppercase tracking-[0.18em] text-primary-foreground/75">примеры сказок</p>
             <div className="flex flex-wrap gap-2">
               {examples.map((example) => (
-                <a key={example.title} href={example.href} target="_blank" rel="noopener noreferrer" className="rounded-full border border-accent/45 bg-popover/16 px-4 py-2 text-sm font-extrabold text-primary-foreground backdrop-blur-md transition-colors hover:bg-popover/28">
+                <a key={example.title} href={example.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 rounded-full border border-accent/45 bg-popover/16 px-4 py-2 text-sm font-extrabold text-primary-foreground backdrop-blur-md transition-colors hover:bg-popover/28">
+                  <FileText className="h-4 w-4 text-accent" aria-hidden="true" />
                   {example.title}
                 </a>
               ))}
@@ -136,10 +137,10 @@ const Index = () => {
       </section>
 
       {selectedData && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/70 px-4 backdrop-blur-sm" onClick={() => setSelectedMessenger(null)}>
-          <div className="w-full max-w-sm rounded-2xl border border-primary-foreground/25 bg-popover/90 p-5 text-center text-primary-foreground shadow-[0_24px_80px_hsl(var(--storybook-night)/0.55)] backdrop-blur-xl" onClick={(event) => event.stopPropagation()}>
-            <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-3xl shadow-[0_0_30px_hsl(var(--storybook-glow)/0.35)]">✨</div>
-            <h2 className="font-display text-2xl font-black leading-tight">Перейти в {selectedData.name}?</h2>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-storybook-night/60 px-4 backdrop-blur-sm" onClick={() => setSelectedMessenger(null)}>
+          <div className="w-full max-w-sm rounded-2xl border border-primary-foreground/15 bg-storybook-night/85 p-5 text-center text-primary-foreground shadow-[0_24px_80px_hsl(var(--storybook-night)/0.55)] backdrop-blur-xl" onClick={(event) => event.stopPropagation()}>
+            <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/80 text-3xl shadow-[0_0_30px_hsl(var(--storybook-glow)/0.25)]">✨</div>
+            <h2 className="font-display text-3xl font-bold leading-tight">Перейти в {selectedData.name}?</h2>
             <p className="mt-2 text-sm font-bold leading-snug text-primary-foreground/82">{selectedData.note}</p>
             {selectedAlreadyOpened ? (
               <button type="button" disabled className="mt-5 inline-flex min-h-12 w-full cursor-not-allowed items-center justify-center rounded-full bg-muted px-5 text-sm font-black text-muted-foreground">
