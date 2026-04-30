@@ -13,7 +13,7 @@ export default {
       },
     },
     fontFamily: {
-      display: ['Playfair Display', 'serif'],
+      display: ['Caveat', 'Marck Script', 'cursive'],
       body: ['Nunito', 'sans-serif'],
     },
     extend: {
