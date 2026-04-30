@@ -92,7 +92,7 @@ const Index = () => {
             Персональная сказка и PDF за пару минут.
           </p>
 
-          <div className="mt-3 flex w-fit max-w-full flex-wrap items-center gap-x-2 gap-y-1 rounded-full border border-primary-foreground/18 bg-card/12 px-3 py-1.5 text-primary-foreground shadow-[0_10px_40px_hsl(var(--storybook-night)/0.14)] backdrop-blur-md md:px-4">
+          <div className="mt-3 flex w-fit max-w-full flex-wrap items-center gap-x-2 gap-y-1 rounded-xl border border-primary-foreground/18 bg-card/12 px-3 py-1.5 text-primary-foreground shadow-[0_10px_40px_hsl(var(--storybook-night)/0.14)] backdrop-blur-md md:px-4">
             {features.map(({ label, Icon }) => (
               <div key={label} className="inline-flex items-center gap-1.5 text-[11px] font-extrabold leading-none md:text-xs">
                 <Icon className="h-3.5 w-3.5 shrink-0 text-accent md:h-4 md:w-4" aria-hidden="true" />
