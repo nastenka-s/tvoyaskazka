@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FileText, Music, Sparkles, Wand2 } from "lucide-react";
+import { BookOpen, FileText, Music, Sparkles } from "lucide-react";
 import heroImage from "@/assets/fairy-bot-hero.png";
 
 const MAX_LINK = "https://max.ru/id352829389470_4_bot";
@@ -17,10 +17,10 @@ const examples = [
 ];
 
 const features = [
-  { label: "Ребёнок — герой", Icon: Sparkles },
-  { label: "Сюжет за пару минут", Icon: Wand2 },
-  { label: "PDF", Icon: FileText },
-  { label: "Песня-поздравление", Icon: Music },
+  { label: "Ваш ребёнок — главный герой сказки", Icon: Sparkles },
+  { label: "Каждый раз уникальный сюжет", Icon: Wand2 },
+  { label: "Готовая PDF-книга", Icon: BookOpen },
+  { label: "Индивидуальная песня-поздравление", Icon: Music },
 ];
 
 type Messenger = "telegram" | "max";
