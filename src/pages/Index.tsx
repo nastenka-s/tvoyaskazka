@@ -8,11 +8,11 @@ const TELEGRAM_LINK = "https://t.me/skazkisrebenkombot";
 const examples = [
   {
     title: "Костя и Город Роботов",
-    href: "https://gykgkporkemmzsnychxd.supabase.co/storage/v1/object/public/dedmoroz-examples/Kostya_roboti.pdf",
+    href: "https://disk.yandex.ru/i/pmf-9tAw48MR5g",
   },
   {
     title: "Лия и Фея",
-    href: "https://gykgkporkemmzsnychxd.supabase.co/storage/v1/object/public/dedmoroz-examples/Lilya_feya.pdf",
+    href: "https://disk.yandex.ru/i/s3iGhuMQNWvRzw",
   },
 ];
 
